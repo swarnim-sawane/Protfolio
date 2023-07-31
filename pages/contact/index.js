@@ -95,6 +95,7 @@ const Contact = () => {
             method="POST"
             onSubmit={handleSubmit}
             ref={formRef}
+            onInput={(e) => e.target.value = e.target.value.replace(/'/g, '&apos;')}
 
             variants={fadeIn("up", 0.4)}
             initial="hidden"
@@ -142,6 +143,7 @@ const Contact = () => {
                   placeholder="Message"
                   value={formData.message}
                   onChange={handleChange}
+                  onInput={(e) => e.target.value = e.target.value.replace(/'/g, '&apos;')}
                   className="textarea"
                 />
             

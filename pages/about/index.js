@@ -1,4 +1,5 @@
 /** @format */
+// eslint-disable-next-line react/jsx-key
 
 import React, { useState } from "react";
 
@@ -10,15 +11,11 @@ import {
   FaFigma,
   FaWordpress,
   FaPython,
-  FaCuttlefish,
   FaCogs,
   FaTerminal,
 } from "react-icons/fa";
 
 import {
-  SiNextdotjs,
-  SiFramer,
-  SiAdobexd,
   SiAdobephotoshop,
   SiJupyter,
   SiGithub,
@@ -240,10 +237,11 @@ const About = () => {
           exit="hidden"
         >
           <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
+            
             {aboutData.map((item, itemIndex) => {
               return (
                 <div
-                  key={itemIndex}
+                key={item.title}
                   className={`${
                     index === itemIndex &&
                     "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
@@ -259,7 +257,7 @@ const About = () => {
             {aboutData[index].info.map((item, itemIndex) => {
               return (
                 <div
-                  key={itemIndex}
+                  key={item.title}
                   className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
                 >
                   {/* title */}
@@ -269,7 +267,7 @@ const About = () => {
                   <div className="flex gap-x-4">
                     {/* icons */}
                     {item.icons?.map((icon, itemIndex) => {
-                      return <div className="text-2xl text-white">{icon}</div>;
+                      return <div key={null} className="text-2xl text-white">{icon}</div>;
                     })}
                   </div>
                 </div>
