@@ -25,6 +25,8 @@ module.exports = {
         primary: '#131424',
         secondary: '#393A47',
         accent: '#F13024',
+        scrollbarThumb: '#F13024', // Customize scrollbar thumb color
+        scrollbarTrack: '#393A47', 
       },
       backgroundImage: {
         explosion: 'url("/bg-explosion.png")',
@@ -38,6 +40,10 @@ module.exports = {
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         sora: [`var(--font-sora)`, 'sans-serif'],
+      },
+      scrollbar: {
+        thin: '1px',
+        rounded: '9999px', // Use a large value for full rounding
       },
     },
   },

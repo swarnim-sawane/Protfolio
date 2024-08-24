@@ -6,15 +6,19 @@ export const workSlides = {
     {
       images: [
         {
+          title: "Olly",
+          path: "/Olly.png",
+        },
+        {
           title: "Dall-e Clone",
           path: "/PIC1.2.png",
         },
         {
-          title: "title",
+          title: "Noice Chat",
           path: "/PIC2.2.jpeg",
         },
         {
-          title: "title",
+          title: "Koios",
           path: "/PIC3.jpeg",
         },
       ],
@@ -23,10 +27,10 @@ export const workSlides = {
 };
 
 const imageLinkDict = {
+  "/Olly.png": "https://www.cloudraft.io/olly", // Replace "/link4" with the actual URL for the fourth image
   "/PIC1.2.png": "https://dall-e-clone-swarnim-sawane.netlify.app/", // Replace "/link1" with the actual URL for the first image
-  "/PIC2.2.jpeg": "https://chat-app-clone-swarnim-sawane.netlify.app/login", // Replace "/link2" with the actual URL for the second image
+  "/PIC2.2.jpeg": "https://chat-app-clone-swarnim-sawane.netlify.app/", // Replace "/link2" with the actual URL for the second image
   "/PIC3.jpeg": "https://sites.google.com/view/koios", // Replace "/link3" with the actual URL for the third image
-  "/thumb4.jpg": "https://www.google.com/", // Replace "/link4" with the actual URL for the fourth image
   "/thumb1.jpg": "https://www.google.com/", // Replace "/link5" with the actual URL for the fifth image
   // Add more entries as needed for other images
 };
@@ -56,12 +60,12 @@ const WorkSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="h-[280px] sm:h-[480px]"
+      className="h-auto"
     >
       {workSlides.slides.map((slide, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
+            <div className="grid grid-cols-2 grid-rows-2 gap-8 cursor-pointer">
               {slide.images.map((image, index) => {
                 const link = imageLinkDict[image.path] || "#";
                 return (
@@ -74,30 +78,32 @@ const WorkSlider = () => {
                     <div
                       className="relative rounded-lg overflow-hidden flex items-center justify-center group"
                       key={index}
-                      
                     >
-                      <div className="flex items-center justify-center relative overflow-hidden group">
+                      <div className="flex items-center justify-center relative overflow-hidden group w-full h-full">
                         {/* image */}
                         <Image
                           src={image.path}
+                          layout="responsive"
                           width={500}
                           height={300}
-                          alt=""
+                          objectFit="contain" // Ensures the entire image is visible
+                          alt={image.title}
+                          className="rounded-lg"
                         />
 
                         {/* overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#14596B] to-[#6dd5ed] opacity-0 group-hover:opacity-80 transition-all duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#14596B] to-[#1a0932] opacity-0 group-hover:opacity-80 transition-all duration-700"></div>
 
                         {/* title */}
-                        <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300">
-                          <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em]">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-all duration-300">
+                          <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em] text-center">
                             {/* title part 1 */}
-                            <div className="delay-100">LIVE</div>
+                            <div className="delay-100 text-xl">LIVE</div>
                             {/* title part 2 */}
-                            <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
+                            <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150 text-xl">
                               PROJECT
                             </div>
-                            {/* icons*/}
+                            {/* icons */}
                             <div className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200 text-accent">
                               <BsArrowRight />
                             </div>
@@ -116,3 +122,5 @@ const WorkSlider = () => {
   );
 };
 export default WorkSlider;
+
+

@@ -1,8 +1,11 @@
-/** @format */
-// eslint-disable-next-line react/jsx-key
-
 import React, { useState } from "react";
-
+import { motion } from "framer-motion";
+import { fadeIn } from "../../variants";
+import WorkSlider from "../../components/WorkSlider";
+import Bulb from "../../components/Bulb";
+import Circles from "../../components/Circles";
+import TestimonialSlider from "../../components/TestimonialSlider";
+import ServiceSlider from "../../components/ServiceSlider";
 import {
   FaHtml5,
   FaCss3,
@@ -13,8 +16,12 @@ import {
   FaPython,
   FaCogs,
   FaTerminal,
+  FaJava,
+  FaNode,
+  FaGit,
+  FaDocker,
+  FaAws,
 } from "react-icons/fa";
-
 import {
   SiAdobephotoshop,
   SiJupyter,
@@ -26,255 +33,192 @@ import {
   SiPandas,
   SiFirebase,
   SiCplusplus,
-  SiAbletonlive
+  SiAbletonlive,
+  SiReact as SiReactIcon, // Aliased to avoid name conflict
+  SiFlask,
 } from "react-icons/si";
 
-//  data
+// Data
 export const aboutData = [
   {
-    title: "skills",
+    title: "My Skills",
     info: [
       {
-        title: "Competitive Coding",
-        icons: [<SiCplusplus />, <FaPython />,  <FaCogs />, <FaTerminal />],
-      },
-      {
-        title: "Machine Learning",
+        title: "Languages -",
         icons: [
-          <SiJupyter />,
-          <FaPython />,
-          <SiPytorch />,
-          <SiTensorflow />,
-          <SiGithub />,
-          <SiCplusplus />,
+          <SiCplusplus key="cpp" />,
+          <FaPython key="python" />,
+          <FaJava key="java" />,
+          <FaHtml5 key="html" />,
+          <SiMysql key="mysql" />,
+          <SiMongodb key="mongodb" />,
+          <SiPandas key="pandas" />,
         ],
       },
       {
-        title: "DBMS",
-        icons: [<SiMysql />, <SiMongodb />, <SiPandas />],
-      },
-      {
-        title: "Web Development",
+        title: "Frameworks -",
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <FaReact />,
-          <SiFirebase />,
-          <FaWordpress />,
+          <SiFlask key="flask" />,
+          <FaNode key="node" />,
+          <SiPytorch key="pytorch" />,
+          <SiTensorflow key="tensorflow" />,
+          <SiGithub key="github" />,
+          <SiReactIcon key="react" />,
         ],
       },
       {
-        title: "UI/UX Design",
-        icons: [<FaFigma />, <SiAdobephotoshop />],
+        title: "Developer Tools -",
+        icons: [
+          <FaGit key="git" />,
+          <FaDocker key="docker" />,
+          <FaAws key="aws" />,
+          <SiFirebase key="firebase" />,
+          <FaWordpress key="wordpress" />,
+        ],
       },
       {
-        title: "Music Production",
-        icons: [<SiAbletonlive />],
-      },
-    ],
-  },
-  // {
-  //   title: "awards",
-  //   info: [
-  //     {
-  //       title: "Webby Awards - Honoree",
-  //       stage: "2011 - 2012",
-  //     },
-  //     {
-  //       title: "Adobe Design Achievement Awards - Finalist",
-  //       stage: "2009 - 2010",
-  //     },
-  //   ],
-  // },
-  {
-    title: "experience",
-    info: [
-      {
-        title: "Competitve Coding - Codechef , Codeforces",
-        stage: "2021 - Present",
-      },
-      {
-        title: "Web Development - Self",
-        stage: "2022 - Present",
-      },
-      {
-        title: "Music Production - YouTube",
-        stage: "2019 - Present",
-      },
-    ],
-  },
-  {
-    title: "credentials",
-    info: [
-      {
-        title: " Machine Learning - MatLab",
-        stage: "2023",
-      },
-      {
-        title: "Web Development - Coursera",
-        stage: "2022",
-      },
-      {
-        title: "Generative AI Course - Google Dev",
-        stage: "2023",
+        title: "Music Production -",
+        icons: [<SiAbletonlive key="ableton" />],
       },
     ],
   },
 ];
 
-///components
-import Avatar from "../../components/Avatar";
-import Circles from "../../components/Circles";
-
-//framer motion
-import { motion } from "framer-motion";
-import { fadeIn } from "../../variants";
-
-//counter
-import CountUp from "react-countup";
-
 const About = () => {
   const [index, setIndex] = useState(0);
-  console.log(index);
+
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="h-screen bg-primary/30 py-32 text-center overflow-y-auto scrollbar-thin scrollbar-thumb-scrollbarThumb scrollbar-track-scrollbarTrack scrollbar-rounded">
       <Circles />
-      {/* avatar img */}
-      <motion.div
-        variants={fadeIn("right", 0.2)}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="hidden xl:flex absolute bottom-0 -left-[120px] max-w-[400px] max-h-[650px]"
-      >
-        <Avatar />
-      </motion.div>
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
-        {/* text */}
-        <div className="flex-1 flex-col justify-center">
-          <motion.h2
-            className="h2"
-            variants={fadeIn("right", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            Unveiling the <span className="text-accent">Passion</span>,{" "}
-            <span className="text-accent">Perseverance</span> and{" "}
-            <span className="text-accent">Progress.</span>
-          </motion.h2>
-          <motion.p
-            className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
-            variants={fadeIn("right", 0.4)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            With an insatiable passion for AI, technology, and coding, I immerse
-            myself in the world of innovation. As a dedicated learner, I embrace
-            every opportunity to explore emerging concepts and cutting-edge
-            advancements, fueled by the excitement of unraveling new
-            possibilities.
-          </motion.p>
 
-          {/* counters */}
-          <motion.div
-            className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
-            variants={fadeIn("right", 0.6)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            <div className="flex flex-1 xl:gap-x-6">
-              {/* experience */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={5} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Projects Completed
-                </div>
-              </div>
-
-              {/* clients */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={8} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Online Certifications
-                </div>
-              </div>
-
-              {/* projects */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={50} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Coding Challenges
-                </div>
-              </div>
-
-              {/* Hackathons
-              <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
-                <div className='text-2xl xl:text-4xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={5} duration={5} /> + 
-                </div>
-                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Awards</div>
-              </div> */}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* info */}
+      {/* Skills Section */}
+      <div className="container mx-auto flex flex-col items-center">
         <motion.div
-          className="flex flex-col w-full xl:max-w-[48%] h-[480px]"
-          variants={fadeIn("left", 0.4)}
+          className="flex flex-col w-full xl:max-w-3xl items-center"
+          variants={fadeIn("down", 0.4)}
           initial="hidden"
           animate="show"
           exit="hidden"
         >
-          <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
-            
-            {aboutData.map((item, itemIndex) => {
-              return (
-                <div
-                key={item.title}
-                  className={`${
-                    index === itemIndex &&
-                    "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
-                  }cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                  onClick={() => setIndex(itemIndex)}
-                >
-                  {item.title}
-                </div>
-              );
-            })}
+          <div className="flex justify-center mb-6 xl:mb-12">
+            <motion.h2
+              variants={fadeIn("down", 0.3)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="text-4xl font-bold"
+            >
+              My Skills<span className="text-accent">.</span>
+            </motion.h2>
           </div>
-          <div className=" py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemIndex) => {
-              return (
-                <div
-                  key={item.title}
-                  className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
-                >
-                  {/* title */}
-                  <div className="font-light mb-2 md:mb-0">{item.title}</div>
-                  <div className="hidden md:flex">-</div>
-                  <div className="hidden md:flex">{item.stage}</div>
-                  <div className="flex gap-x-4">
-                    {/* icons */}
-                    {item.icons?.map((icon, itemIndex) => {
-                      return <div key={null} className="text-2xl text-white">{icon}</div>;
-                    })}
-                  </div>
+
+          <div className="py-2 xl:py-4 flex flex-col gap-y-6 items-center"> {/* Adjusted gap-y for more spacing */}
+            {aboutData[index].info.map((item) => (
+              <div
+                key={item.title}
+                className="flex flex-col md:flex-row gap-x-4 items-center text-white/60"
+              >
+                {/* Title */}
+                <div className="font-light text-2xl mb-2 md:mb-0">{item.title}</div> {/* Increased text size */}
+                <div className="flex gap-x-6">
+                  {/* Icons */}
+                  {item.icons.map((icon, idx) => (
+                    <div key={idx} className="text-3xl">
+                      {icon}
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </motion.div>
+      </div>
+
+     <div className="h-18"></div>
+
+      {/* Projects Section */}
+      <div className="container mx-auto mt-1 xl:mt-24 flex flex-col items-center">
+        <div className="flex justify-center mb-6 xl:mb-12">
+          <motion.h2
+            variants={fadeIn("down", 0.3)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="text-4xl font-bold"
+          >
+            My Projects<span className="text-accent">.</span>
+          </motion.h2>
+        </div>
+
+        {/* Slider */}
+        <motion.div
+          className="w-full"
+          variants={fadeIn("down", 0.6)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+          <WorkSlider />
+        </motion.div>
+        <div className="spacer h-100"></div>
+      </div>
+
+      <div className="h-24"></div>
+
+      {/* My Specializations */}
+      <div className="container mx-auto mt-1 xl:mt-24 flex flex-col items-center">
+        {/* text */}
+        <div className="flex justify-center mb-6 xl:mb-12">
+          <motion.h2
+            variants={fadeIn("down", 0.3)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="text-4xl font-bold"
+          >
+            My Specializations<span className="text-accent">.</span>
+          </motion.h2>
+        </div>
+
+        {/* slider */}
+        <motion.div
+          className="w-full xl:max-w-[65%]"
+          variants={fadeIn("down", 0.6)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+          <ServiceSlider />
+        </motion.div>
+      </div>
+
+      <div className="h-24"></div>
+      {/* Voulenteering section */}
+      <div className="container mx-auto h-full flex flex-col justify-center">
+        {/* title */}
+        <motion.h2
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="h2 mb-8 xl:mb-0"
+        >
+          Me as a <span className="text-accent">Volunteer.</span>
+        </motion.h2>
+
+        {/* slider */}
+        <motion.div
+        variants={fadeIn("up", 0.4)}
+        initial="hidden"
+        animate="show"
+        exit="hidden">
+          <TestimonialSlider />
+        </motion.div>
+        
+      </div>
+
+      <div className="mt-12">
+        <Bulb />
       </div>
     </div>
   );

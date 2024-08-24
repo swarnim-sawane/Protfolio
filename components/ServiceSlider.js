@@ -3,28 +3,28 @@
 //service data
 export const serviceData = [
   {
-    icon: <RxCode />,
-    title: "Competetive Coding",
-    description: "Code adrenaline: hackathons ignite, puzzles unravel, thrilling journey.",
-    href: "https://www.codechef.com/users/noice_twice",
+    icon: <RxMagicWand />,
+    title: "Artificial Intelligence",
+    description: "Building Full Stack AI Applications",
+    href: "https://www.cloudraft.io/olly",
   },
   {
-    icon: <RxLaptop />,
-    title: "Web Development",
-    description: "Tech-evolving web wizard, always learning and exploring.",
-    href: "./work",
+    icon: <RxCode />,
+    title: "Competetive Coding",
+    description: "C++ DSA Problem Solving",
+    href: "https://www.codechef.com/users/noice_twice",
   },
   {
     icon: <RxBarChart />,
     title: "Data Analysis",
-    description: "Using data analysis to unveil trends, patterns, and solutions.",
+    description: "Python, Pandas and Data would do!",
     href: "https://www.kaggle.com/swarnimsawane",
 
   },
   {
     icon: <RxSpeakerLoud />,
     title: "Music Production",
-    description: "Notes and beats weaving emotion, enhancing storytelling.",
+    description: "FL Studio + Pianist for passion",
     href: "https://youtube.com/@melodicious5698",
     
   },
@@ -51,6 +51,7 @@ import {
   RxBarChart,
   RxSpeakerLoud,
   RxCode,
+  RxMagicWand,
 } from "react-icons/rx";
 
 //import required modules
